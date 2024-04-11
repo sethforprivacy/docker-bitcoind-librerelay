@@ -36,7 +36,7 @@ jobs:
           load: true
           platforms: linux/amd64
           tags: bitcoind-librerelay:amd64
-          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/bitcoind-librerelay:latest
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/bitcoind-librerelay:latest
       - 
         name: Test-run x86_64 image
         run: |
@@ -53,4 +53,4 @@ jobs:
           load: true
           platforms: linux/arm64
           tags: bitcoind-librerelay:arm64
-          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/bitcoind-librerelay:latest
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/bitcoind-librerelay:latest
