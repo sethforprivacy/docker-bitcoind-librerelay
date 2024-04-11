@@ -39,7 +39,7 @@ jobs:
       - 
         name: Get bitcoind version
         id: get_tag
-        run: echo "::set-output name=tag::$(awk -F '=' '/VERSION=/ {print $2}' Dockerfile)"
+        run: echo "::set-output name=tag::$(awk -F '=' '/BRANCH=/ {print $2}' Dockerfile)"
       - 
         name: Build x86_64 image
         id: docker_build_amd64
