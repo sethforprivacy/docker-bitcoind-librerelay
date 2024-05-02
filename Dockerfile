@@ -25,8 +25,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     && apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set variables necessary for download and verification of bitcoind
-ARG BRANCH=libre-relay-v27.0rc1
-ARG COMMIT_HASH=051ea14445e2bbc5c352285acc6aaafdea82a5e6
+ARG BRANCH=libre-relay-v27.0
+ARG COMMIT_HASH=a4c23998d7776a39970725071b8f745b4e55de49
 ARG NPROC
 
 # Switch to Bitcoin source directory
@@ -71,7 +71,8 @@ WORKDIR /bitcoin
 # Set bitcoin user and group with static IDs
 ARG GROUP_ID=1000
 ARG USER_ID=1000
-RUN groupadd -g ${GROUP_ID} bitcoin \
+RUN userdel ubuntu \
+    && groupadd -g ${GROUP_ID} bitcoin \
     && useradd -u ${USER_ID} -g bitcoin -d /bitcoin bitcoin
 
 # Copy over bitcoind binaries
